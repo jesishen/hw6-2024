@@ -76,7 +76,7 @@ document.querySelector("#mute").addEventListener("click", function(){
 document.querySelector("#slider").addEventListener("change", function(){ // CHANGE NOT CLICK OMG
 	console.log("volume slider");
 	video.volume = document.querySelector("#slider").value / 100;
-	document.getElementById("#volume").innerHTML = video.volume * 100 + "%";
+	document.getElementById("volume").innerHTML = video.volume * 100 + "%";
 })
 
 // GIRL U GOT THIS UR GETTING THE HANG OF IT!! :) <3
