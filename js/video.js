@@ -9,7 +9,6 @@ window.addEventListener("load", function() {
 		console.log("Auto play off" + video.autoplay);
 	video.loop = false;
 		console.log("Loop off" + video.loop);
-	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 });
 
 // u can do this
@@ -74,7 +73,7 @@ document.querySelector("#mute").addEventListener("click", function(){
 
 // Change the volume based on the slider and update the volume information.
 
-document.querySelector("#slider").addEventListener("input", function(){ // INPUT NOT CLICK OMG
+document.querySelector("#slider").addEventListener("change", function(){ // CHANGE NOT CLICK OMG
 	console.log("volume slider");
 	video.volume = document.querySelector("#slider").value / 100;
 	document.getElementById("#volume").innerHTML = video.volume * 100 + "%";
