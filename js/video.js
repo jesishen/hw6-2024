@@ -1,4 +1,5 @@
 var video;
+let lastVolume;
 
 // Initialize the video element and turn off autoplay and turn off looping.
 
@@ -8,6 +9,7 @@ window.addEventListener("load", function() {
 	video.autoplay = false;
 	video.loop = false;
 	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+	lastVolume = video.volume;
 });
 
 // u can do this
@@ -16,7 +18,13 @@ window.addEventListener("load", function() {
 
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
-	video.play();
+	if (video.paused){
+		video.play();
+		this.innerHTML = "Pause";
+	}else {
+		video.pause()
+		this.innerHTML = "Play";
+	}
 	document.querySelector("#volume").innerHTML = video.volume * 100 + "%"; // update volume
 });
 
@@ -25,6 +33,7 @@ document.querySelector("#play").addEventListener("click", function() {
 document.querySelector("#pause").addEventListener("click", function(){
 	console.log("pause video");
 	video.pause();
+	document.querySelector("#play").innerHTML = "Play";
 });
 
 // speed up slow down
@@ -66,8 +75,10 @@ document.querySelector("#mute").addEventListener("click", function(){
 	console.log("mute clicked")
 	if(video.muted){
 		video.muted = false;
+		video.volume = lastVolume;
 		this.innerHTML = "Mute";
 	} else{
+		lastVolume = video.volume;
 		video.muted = true;
 		this.innerHTML = "Unmute"
 	}
@@ -78,7 +89,7 @@ document.querySelector("#mute").addEventListener("click", function(){
 document.querySelector("#slider").addEventListener("input", function(){ // INPUT NOT CLICK OMG
 	console.log("changing")
 	video.volume = this.value / 100;
-	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+	document.querySelector("#volume").innerHTML = this.value * 100 + "%"; // volume%
 })
 
 // GIRL U GOT THIS UR GETTING THE HANG OF IT!! :) <3
